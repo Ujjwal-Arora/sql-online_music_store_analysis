@@ -38,8 +38,6 @@ group by c.customer_id,first_name,last_name
 order by spent desc
 
 
---MODERATE
-
 --Question 6. Write query to return the email, first name, last name, & Genre of all Rock Music listeners. Return your list ordered alphabetically by email starting with A
 select distinct email,c.customer_id,first_name,last_name,g.name as genre_name
 from customer c 
@@ -96,8 +94,6 @@ where milliseconds>avg_length
 order by milliseconds desc
 
 
---HARD
-
 --Question 9. Find how much amount spent by each customer on artists? Write a query to return customer name, artist name and total spent
 with cte as (select c.customer_id as customerid,first_name,last_name,ar.name as artist_name,il.invoice_id,avg(il.unit_price*il.quantity) as money_spent_on_each_sale
 			from customer c 
@@ -119,8 +115,6 @@ group by customerid,first_name,last_name,artist_name
 
 
 
-
-
 --Question 10. We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre with the highest amount of purchases. Write a query that returns each country along with the top Genre. For countries where the maximum number of purchases is shared return all Genres
 with cte as (select  billing_country,genre_id as id,sum(il.quantity) as number_of_items_purchased,rank() over (partition by billing_country order by sum(il.quantity) desc) as rnk
 			from invoice i
@@ -136,9 +130,6 @@ join genre
 on cte.id=genre.genre_id
 where rnk=1
 order by billing_country,name
-
-
-
 
 
 
