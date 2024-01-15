@@ -66,9 +66,6 @@ order by email ,genre_name desc;
 
 
 
-
-
-
 --Question 7. Let's invite the artists who have written the most rock music in our dataset. Write a query that returns the Artist name and total track count of the top 10 rock bands
 SELECT TOP 10 artist.artist_id, artist.name,COUNT(artist.artist_id) AS number_of_songs
 FROM track
@@ -78,9 +75,6 @@ JOIN genre ON genre.genre_id = track.genre_id
 WHERE genre.name ='Rock'
 GROUP BY artist.artist_id,artist.name
 ORDER BY number_of_songs DESC
-
-
-
 
 
 
